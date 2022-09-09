@@ -1,4 +1,4 @@
-package com.witaless.rickandmorty.presentation.characterdetails
+package com.witaless.rickandmorty.presentation.ui.characterdetails
 
 import android.os.Bundle
 import android.view.LayoutInflater

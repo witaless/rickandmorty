@@ -1,7 +1,4 @@
-package com.witaless.rickandmorty.presentation.characters.placeholder
-
-import java.util.ArrayList
-import java.util.HashMap
+package com.witaless.rickandmorty.presentation.ui.characters.placeholder
 
 /**
  * Helper class for providing sample content for user interfaces created by

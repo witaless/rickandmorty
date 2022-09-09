@@ -1,3 +1,11 @@
 <resources>
     <string name="app_name">Rick And Morty</string>
+    <string name="image_description">Character Image</string>
+    <string name="status_alive">Alive</string>
+    <string name="status_dead">Dead</string>
+    <string name="status_unknown">Unknown</string>
+    <string name="gender_male">Male</string>
+    <string name="gender_female">Female</string>
+    <string name="gender_genderless">Genderless</string>
+    <string name="gender_unknown">Unknown</string>
 </resources>

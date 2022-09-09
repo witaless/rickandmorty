@@ -3,6 +3,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     package="com.witaless.rickandmorty">
 
+    <uses-permission android:name="android.permission.INTERNET" />
+
     <application
         android:name=".di.MyApplication"
         android:allowBackup="true"

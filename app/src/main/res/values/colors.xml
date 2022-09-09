@@ -7,4 +7,11 @@
     <color name="teal_700">#FF018786</color>
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
+    <color name="status_alive">#66BB6A</color>
+    <color name="status_dead">#EF5350</color>
+    <color name="status_unknown">#939393</color>
+    <color name="gender_female">#EC407A</color>
+    <color name="gender_male">#42A5F5</color>
+    <color name="gender_genderless">#7E57C2</color>
+    <color name="gender_unknown">#939393</color>
 </resources>
