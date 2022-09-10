@@ -6,5 +6,6 @@ data class CharacterItem(
     val species: String,
     val imageUrl: String,
     val status: CharacterStatus,
-    val gender: CharacterGender
+    val gender: CharacterGender,
+    val isFavorite: Boolean
 )

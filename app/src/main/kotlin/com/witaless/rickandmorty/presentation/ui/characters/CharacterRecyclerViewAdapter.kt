@@ -2,6 +2,7 @@ package com.witaless.rickandmorty.presentation.ui.characters
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
+import android.widget.ImageButton
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.DiffUtil
@@ -15,7 +16,8 @@ import com.witaless.rickandmorty.databinding.ItemCharacterBinding
 import com.witaless.rickandmorty.presentation.model.CharacterItem
 
 class CharacterRecyclerViewAdapter(
-    private val onItemClick: (Int) -> Unit
+    private val onItemClick: (Int) -> Unit,
+    private val onToggleFavoriteClick: (Int) -> Unit
 ) : ListAdapter<CharacterItem, CharacterRecyclerViewAdapter.ViewHolder>(DIFF_CALLBACK) {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
@@ -37,6 +39,7 @@ class CharacterRecyclerViewAdapter(
         private val tvName: TextView = binding.tvName
         private val tvDescription: TextView = binding.tvDescription
         private val ivImage: ImageView = binding.ivImage
+        private val ibFavorite: ImageButton = binding.ibFavorite
         private val chipStatus: Chip = binding.chipStatus
         private val chipGender: Chip = binding.chipGender
 
@@ -49,6 +52,14 @@ class CharacterRecyclerViewAdapter(
             chipGender.setText(item.gender.stringRes)
             chipGender.setChipBackgroundColorResource(item.gender.colorRes)
 
+            ibFavorite.setImageResource(
+                if (item.isFavorite) {
+                    R.drawable.ic_star_filled
+                } else {
+                    R.drawable.ic_star_outline
+                }
+            )
+
             ivImage.load(item.imageUrl) {
                 placeholder(R.drawable.ic_placeholder_avatar)
                 transformations(CircleCropTransformation())
@@ -56,6 +67,10 @@ class CharacterRecyclerViewAdapter(
 
             itemView.setOnClickListener {
                 onItemClick(item.id)
+            }
+
+            ibFavorite.setOnClickListener {
+                onToggleFavoriteClick(item.id)
             }
         }
     }

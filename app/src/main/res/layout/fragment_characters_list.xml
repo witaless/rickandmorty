@@ -13,13 +13,28 @@
         app:layout_constraintTop_toTopOf="parent"
         app:title="@string/app_name" />
 
+    <ImageButton
+        android:id="@+id/ib_show_favorites"
+        android:layout_width="32dp"
+        android:layout_height="32dp"
+        android:layout_marginEnd="16dp"
+        android:background="?selectableItemBackgroundBorderless"
+        android:contentDescription="@string/show_favorites_description"
+        android:elevation="10dp"
+        android:scaleType="fitXY"
+        android:src="@drawable/ic_star_outline"
+        app:layout_constraintBottom_toBottomOf="@+id/tb_toolbar"
+        app:layout_constraintEnd_toEndOf="@id/tb_toolbar"
+        app:layout_constraintTop_toTopOf="@id/tb_toolbar" />
+
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/rv_characters"
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:clipToPadding="false"
         android:paddingHorizontal="16dp"
-        android:paddingVertical="16dp"
+        android:paddingTop="16dp"
+        android:paddingBottom="24dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintTop_toBottomOf="@id/tb_toolbar"
         tools:listitem="@layout/item_character" />
@@ -29,8 +44,10 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:indeterminate="true"
+        app:hideAnimationBehavior="inward"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/tb_toolbar" />
+        app:layout_constraintTop_toBottomOf="@id/tb_toolbar"
+        app:showAnimationBehavior="inward" />
 </androidx.constraintlayout.widget.ConstraintLayout>

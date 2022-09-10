@@ -8,8 +8,10 @@
     app:cardCornerRadius="16dp">
 
     <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/cl_root"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:background="?selectableItemBackground"
         android:padding="16dp">
 
         <ImageView
@@ -28,7 +30,7 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="16dp"
-            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintEnd_toStartOf="@+id/ib_favorite"
             app:layout_constraintStart_toEndOf="@id/iv_image"
             app:layout_constraintTop_toTopOf="parent"
             tools:text="@tools:sample/full_names" />
@@ -63,7 +65,16 @@
             app:layout_constraintTop_toBottomOf="@+id/tv_description"
             tools:text="@tools:sample/first_names" />
 
-
+        <ImageButton
+            android:id="@+id/ib_favorite"
+            android:layout_width="32dp"
+            android:layout_height="32dp"
+            android:background="?selectableItemBackgroundBorderless"
+            android:contentDescription="@string/show_favorites_description"
+            android:elevation="10dp"
+            android:scaleType="fitXY"
+            android:src="@drawable/ic_star_outline"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
     </androidx.constraintlayout.widget.ConstraintLayout>
-
 </androidx.cardview.widget.CardView>

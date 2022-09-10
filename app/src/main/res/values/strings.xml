@@ -1,6 +1,7 @@
 <resources>
     <string name="app_name">Rick And Morty</string>
     <string name="image_description">Character Image</string>
+    <string name="show_favorites_description">Show Favorites</string>
     <string name="status_alive">Alive</string>
     <string name="status_dead">Dead</string>
     <string name="status_unknown">Unknown</string>

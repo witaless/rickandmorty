@@ -50,13 +50,14 @@ class Character(
     }
 }
 
-fun Character.toItem() = CharacterItem(
+fun Character.toItem(isFavorite: Boolean = false) = CharacterItem(
     id = id,
     name = name,
     species = species,
     imageUrl = image,
     status = status.toUi(),
-    gender = gender.toUi()
+    gender = gender.toUi(),
+    isFavorite = isFavorite
 )
 
 fun Character.Gender.toUi() = when (this) {
