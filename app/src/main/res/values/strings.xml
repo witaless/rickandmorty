@@ -13,4 +13,6 @@
     <string name="last_known_location_title">Last known location:</string>
     <string name="error_text">An error occurred, please try again later.</string>
     <string name="try_again_button">Try again</string>
+    <string name="back_button_description">Back button</string>
+    <string name="add_to_favorites_button_description">Add to favorites button</string>
 </resources>

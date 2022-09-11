@@ -70,7 +70,7 @@
             android:layout_width="32dp"
             android:layout_height="32dp"
             android:background="?selectableItemBackgroundBorderless"
-            android:contentDescription="@string/show_favorites_description"
+            android:contentDescription="@string/add_to_favorites_button_description"
             android:elevation="10dp"
             android:scaleType="fitXY"
             android:src="@drawable/ic_star_outline"

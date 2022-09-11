@@ -7,6 +7,7 @@ import androidx.lifecycle.viewModelScope
 import com.witaless.rickandmorty.data.CharacterRepository
 import com.witaless.rickandmorty.presentation.model.CharacterItem
 import dagger.hilt.android.lifecycle.HiltViewModel
+import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.flatMapLatest
 import kotlinx.coroutines.launch
@@ -26,6 +27,7 @@ class CharactersViewModel @Inject constructor(
     private var isLastPage = false
     private var lastPageNumber = 1
 
+    @OptIn(ExperimentalCoroutinesApi::class)
     val characters: LiveData<List<CharacterItem>> =
         isFavoriteViewEnabledFlow.flatMapLatest { isFavorites ->
             if (isFavorites) {
