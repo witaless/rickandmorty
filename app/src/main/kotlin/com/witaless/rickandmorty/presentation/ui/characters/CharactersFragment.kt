@@ -58,6 +58,10 @@ class CharactersFragment : Fragment() {
             viewModel.showFavoritesClicked()
         }
 
+        binding.btnTryAgain.setOnClickListener {
+            viewModel.reload()
+        }
+
         viewModel.characters.observe(viewLifecycleOwner) {
             characterAdapter.submitList(it)
         }
@@ -75,5 +79,17 @@ class CharactersFragment : Fragment() {
                 }
             )
         }
+
+        viewModel.showError.observe(viewLifecycleOwner) {
+            binding.ibShowFavorites.isVisible = !it
+            binding.rvCharacters.isVisible = !it
+            binding.tvError.isVisible = it
+            binding.btnTryAgain.isVisible = it
+        }
+    }
+
+    override fun onResume() {
+        super.onResume()
+        viewModel.updateFavoritesStatusIfNotLoading()
     }
 }

@@ -9,4 +9,8 @@
     <string name="gender_female">Female</string>
     <string name="gender_genderless">Genderless</string>
     <string name="gender_unknown">Unknown</string>
+    <string name="origin_location_title">Origin location:</string>
+    <string name="last_known_location_title">Last known location:</string>
+    <string name="error_text">An error occurred, please try again later.</string>
+    <string name="try_again_button">Try again</string>
 </resources>

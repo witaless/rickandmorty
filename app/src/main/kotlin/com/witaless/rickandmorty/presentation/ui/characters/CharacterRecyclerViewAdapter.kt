@@ -5,6 +5,7 @@ import android.view.ViewGroup
 import android.widget.ImageButton
 import android.widget.ImageView
 import android.widget.TextView
+import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
@@ -36,6 +37,7 @@ class CharacterRecyclerViewAdapter(
     }
 
     inner class ViewHolder(binding: ItemCharacterBinding) : RecyclerView.ViewHolder(binding.root) {
+        private val clRoot: ConstraintLayout = binding.clRoot
         private val tvName: TextView = binding.tvName
         private val tvDescription: TextView = binding.tvDescription
         private val ivImage: ImageView = binding.ivImage
@@ -63,9 +65,10 @@ class CharacterRecyclerViewAdapter(
             ivImage.load(item.imageUrl) {
                 placeholder(R.drawable.ic_placeholder_avatar)
                 transformations(CircleCropTransformation())
+                crossfade(true)
             }
 
-            itemView.setOnClickListener {
+            clRoot.setOnClickListener {
                 onItemClick(item.id)
             }
 

@@ -1,9 +1,11 @@
 package com.witaless.rickandmorty.data
 
-import com.witaless.rickandmorty.data.model.Character
+import com.witaless.rickandmorty.data.model.toDetails
 import com.witaless.rickandmorty.data.model.toItem
+import com.witaless.rickandmorty.presentation.model.CharacterDetails
 import com.witaless.rickandmorty.presentation.model.CharacterItem
 import com.witaless.rickandmorty.presentation.model.CharactersPage
+import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.first
 import javax.inject.Inject
 
@@ -20,6 +22,10 @@ class CharacterRepository @Inject constructor(
         )
     }
 
+    suspend fun getCharacter(id: Int): Result<CharacterDetails> = runCatching {
+        apiService.getCharacter(id).toDetails()
+    }
+
     suspend fun getFavoriteCharacters(): Result<List<CharacterItem>> = runCatching {
         val ids = favoriteCharactersIdStorage.getFavoriteIds().first()
         if (ids.isEmpty()) {
@@ -34,11 +40,10 @@ class CharacterRepository @Inject constructor(
         favoriteCharactersIdStorage.getFavoriteIds().first()
     }
 
-    suspend fun getCharacter(id: Int): Result<Character> = runCatching {
-        apiService.getCharacter(id)
-    }
+    fun getFavoriteCharacterIdsFlow(): Flow<List<Int>> =
+        favoriteCharactersIdStorage.getFavoriteIds()
 
-    suspend fun toggleItemFavoriteState(id: Int) = runCatching {
+    suspend fun toggleCharacterFavoriteState(id: Int) = runCatching {
         val ids = favoriteCharactersIdStorage.getFavoriteIds().first()
         if (ids.contains(id)) {
             favoriteCharactersIdStorage.removeFromFavoriteIds(id)

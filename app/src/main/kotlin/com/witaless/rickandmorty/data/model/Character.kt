@@ -1,5 +1,6 @@
 package com.witaless.rickandmorty.data.model
 
+import com.witaless.rickandmorty.presentation.model.CharacterDetails
 import com.witaless.rickandmorty.presentation.model.CharacterGender
 import com.witaless.rickandmorty.presentation.model.CharacterItem
 import com.witaless.rickandmorty.presentation.model.CharacterStatus
@@ -58,6 +59,21 @@ fun Character.toItem(isFavorite: Boolean = false) = CharacterItem(
     status = status.toUi(),
     gender = gender.toUi(),
     isFavorite = isFavorite
+)
+
+fun Character.toDetails() = CharacterDetails(
+    id = id,
+    name = name,
+    description = if (type.isNotEmpty()) {
+        "$species - $type"
+    } else {
+        species
+    },
+    originLocation = origin.name,
+    lastKnownLocation = location.name,
+    imageUrl = image,
+    status = status.toUi(),
+    gender = gender.toUi(),
 )
 
 fun Character.Gender.toUi() = when (this) {
