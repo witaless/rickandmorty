@@ -9,7 +9,6 @@ import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
-import androidx.navigation.fragment.navArgs
 import coil.load
 import com.witaless.rickandmorty.R
 import com.witaless.rickandmorty.databinding.FragmentCharacterDetailsBinding
@@ -19,7 +18,6 @@ import dagger.hilt.android.AndroidEntryPoint
 class CharacterDetailsFragment : Fragment() {
 
     private val viewModel: CharacterDetailsViewModel by viewModels()
-    private val args: CharacterDetailsFragmentArgs by navArgs()
 
     private lateinit var binding: FragmentCharacterDetailsBinding
 
@@ -41,8 +39,6 @@ class CharacterDetailsFragment : Fragment() {
         binding.ibFavoriteStatus.setOnClickListener {
             viewModel.toggleFavoriteState()
         }
-
-        viewModel.loadDetails(args.id)
 
         viewModel.character.observe(viewLifecycleOwner) {
             binding.tvName.text = it.name

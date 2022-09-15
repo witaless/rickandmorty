@@ -11,6 +11,7 @@ import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.witaless.rickandmorty.R
 import com.witaless.rickandmorty.databinding.FragmentCharactersListBinding
+import com.witaless.rickandmorty.presentation.ui.Page
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
@@ -34,9 +35,12 @@ class CharactersFragment : Fragment() {
 
         val characterAdapter = CharacterRecyclerViewAdapter(
             onItemClick = { id ->
-                val action = CharactersFragmentDirections
-                    .actionCharactersFragmentToCharacterDetailsFragment(id)
-                findNavController().navigate(action)
+                findNavController().navigate(
+                    R.id.action_charactersFragment_to_characterDetailsFragment,
+                    Bundle().apply {
+                        putInt(Page.CharacterDetails.idNavArgument, id)
+                    }
+                )
             },
             onToggleFavoriteClick = { id ->
                 viewModel.toggleItemFavoriteState(id)

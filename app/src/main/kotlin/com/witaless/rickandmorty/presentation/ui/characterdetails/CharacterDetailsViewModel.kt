@@ -1,23 +1,26 @@
 package com.witaless.rickandmorty.presentation.ui.characterdetails
 
 import androidx.lifecycle.LiveData
+import androidx.lifecycle.SavedStateHandle
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.asLiveData
 import androidx.lifecycle.viewModelScope
 import com.witaless.rickandmorty.data.CharacterRepository
 import com.witaless.rickandmorty.presentation.model.CharacterDetails
+import com.witaless.rickandmorty.presentation.ui.Page
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.flow.filterNotNull
-import kotlinx.coroutines.flow.first
 import kotlinx.coroutines.launch
 import javax.inject.Inject
 
 @HiltViewModel
 class CharacterDetailsViewModel @Inject constructor(
+    savedStateHandle: SavedStateHandle,
     private val characterRepository: CharacterRepository
 ) : ViewModel() {
+    private val id: Int = requireNotNull(savedStateHandle[Page.CharacterDetails.idNavArgument])
 
     private val characterFlow = MutableStateFlow<CharacterDetails?>(null)
     private val progressFlow = MutableStateFlow(true)
@@ -34,13 +37,14 @@ class CharacterDetailsViewModel @Inject constructor(
     init {
         viewModelScope.launch {
             characterRepository.getFavoriteCharacterIdsFlow().collectLatest { ids ->
-                val id = characterFlow.filterNotNull().first().id
                 isFavoriteFlow.value = ids.contains(id)
             }
         }
+
+        loadDetails(id)
     }
 
-    fun loadDetails(id: Int) {
+    private fun loadDetails(id: Int) {
         viewModelScope.launch {
             characterRepository.getCharacter(id)
                 .onSuccess { details ->
