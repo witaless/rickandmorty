@@ -1,7 +1,7 @@
 <resources>
     <string name="app_name">Rick And Morty</string>
     <string name="image_description">Character Image</string>
-    <string name="show_favorites_description">Show Favorites</string>
+    <string name="favorite_button_description">Favorite button</string>
     <string name="status_alive">Alive</string>
     <string name="status_dead">Dead</string>
     <string name="status_unknown">Unknown</string>
@@ -14,5 +14,4 @@
     <string name="error_text">An error occurred, please try again later.</string>
     <string name="try_again_button">Try again</string>
     <string name="back_button_description">Back button</string>
-    <string name="add_to_favorites_button_description">Add to favorites button</string>
 </resources>
